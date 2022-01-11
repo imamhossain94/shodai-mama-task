@@ -10,7 +10,7 @@ class ThemesMode {
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: isDarkMode == true? Colors.black: Colors.black,
-      systemNavigationBarIconBrightness: isDarkMode == true?Brightness.dark: Brightness.dark,
+      systemNavigationBarIconBrightness: isDarkMode == true?Brightness.light: Brightness.light,
       statusBarColor: isDarkMode == true?const Color(0xFF003024) : const Color(0xFF003024),
       statusBarBrightness: isDarkMode == true?Brightness.dark: Brightness.dark,
       statusBarIconBrightness: isDarkMode == true?Brightness.dark: Brightness.dark,
