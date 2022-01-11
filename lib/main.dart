@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return Sizer(
         builder: (context, orientation, deviceType) {
           return GetMaterialApp(
-            title: 'Dokan',
+            title: 'Shodai Mama',
             theme: Themes.light,
             darkTheme: Themes.dark,
             themeMode: ThemeService().theme,
@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
           );
         }
     );
-
   }
 
 }

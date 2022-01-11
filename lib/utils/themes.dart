@@ -4,12 +4,23 @@ import 'constants.dart';
 class Themes {
   static final light = ThemeData.light().copyWith(
     backgroundColor: scaffoldBackgroundLight,
-    unselectedWidgetColor: const Color(0xFFFF708A),
+    primaryColor: const Color(0xFF00402F),
+    colorScheme: const ColorScheme.light().copyWith(
+      brightness: Brightness.light,
+      primary: const Color(0xFF00402F),
+      onPrimary: Colors.white,
+      secondary: const Color(0xFF006A4E),
+    ),
 
   );
   static final dark = ThemeData.dark().copyWith(
     backgroundColor: scaffoldBackgroundDark,
-    unselectedWidgetColor: const Color(0xFFFF708A),
-
+    primaryColor: const Color(0xFF00402F),
+    colorScheme: const ColorScheme.light().copyWith(
+      brightness: Brightness.light,
+      primary: const Color(0xFF00402F),
+      onPrimary: Colors.white,
+      secondary: const Color(0xFF006A4E),
+    ),
   );
 }

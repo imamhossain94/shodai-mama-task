@@ -23,17 +23,17 @@ const baseURL = "https://newagedevs.com/wp-json";
 const String idBanner = "";
 const String idInterstitial = "";
 
-const scaffoldBackgroundLight = Color(0xFFF8F8F8);
-const scaffoldBackgroundDark = Color(0xFF212230);
+const scaffoldBackgroundLight = Color(0xFFFAFAFA);
+const scaffoldBackgroundDark = Color(0xFFFAFAFA);
 
-const backgroundLight = Color(0xFFFFFFFF);
-const backgroundDark = Color(0xFF323647);
+// const backgroundLight = Color(0xFFFFFFFF);
+// const backgroundDark = Color(0xFF323647);
 
-const appBarColorLight = Color(0xFFFFFFFF);
-const appBarColorDark = Color(0xFF1D1C29);
+const appBarColorLight = Color(0xFF00402F);
+const appBarColorDark = Color(0xFF00402F);
 
-const primaryColorLight = Color(0xFF5374FF);
-const primaryColorDark = Colors.redAccent;
+const primaryColorLight = Color(0xFF00402F);
+const primaryColorDark = Color(0xFF00402F);
 
 
 List<String> filterList = [

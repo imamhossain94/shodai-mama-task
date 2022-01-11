@@ -9,11 +9,11 @@ class ThemesMode {
     isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: isDarkMode == true? scaffoldBackgroundDark: backgroundLight,
-      systemNavigationBarIconBrightness: isDarkMode == true?Brightness.light: Brightness.dark,
-      statusBarColor: isDarkMode == true?appBarColorDark : scaffoldBackgroundLight,
-      statusBarBrightness: isDarkMode == true?Brightness.light: Brightness.dark,
-      statusBarIconBrightness: isDarkMode == true?Brightness.light: Brightness.dark,
+      systemNavigationBarColor: isDarkMode == true? Colors.black: Colors.black,
+      systemNavigationBarIconBrightness: isDarkMode == true?Brightness.dark: Brightness.dark,
+      statusBarColor: isDarkMode == true?const Color(0xFF003024) : const Color(0xFF003024),
+      statusBarBrightness: isDarkMode == true?Brightness.dark: Brightness.dark,
+      statusBarIconBrightness: isDarkMode == true?Brightness.dark: Brightness.dark,
     ));
   }
 }
