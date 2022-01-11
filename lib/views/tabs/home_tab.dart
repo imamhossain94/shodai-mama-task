@@ -5,6 +5,7 @@ import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shodai_mama_task/controllers/home_tab_controller.dart';
+import 'package:shodai_mama_task/views/components/custom_product_card.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeTab extends StatelessWidget {
@@ -95,13 +96,11 @@ class HomeTab extends StatelessWidget {
                 title: "Fresh",
                 subtitle:
                     "গুনগত মান বজায় রাখার জন্য পচনশীল খাদ্যপণ্য সরবরাহ করা হয় সকাল ৮-১১ টা পর্যন্ত ।"),
-
-
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 1.w),
               child: GetX<HomeTabController>(builder: (controller) {
                 return GridView.builder(
-                  itemCount: controller.productLists.value.length,
+                  itemCount: controller.productLists.value.length-10,
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -111,127 +110,63 @@ class HomeTab extends StatelessWidget {
                     mainAxisSpacing: 7.w,
                   ),
                   itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 1,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                flex: 3,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.network(
-                                    controller.productLists.value[index].image!,
-                                    fit: BoxFit.cover,
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 5,
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(3.w, 1.h, 2.w, 1.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        controller.productLists.value[index].title!,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 10.sp,
-                                            fontFamily: "Roboto",
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.normal),
-                                      ),
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Text(
-                                        "each",
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            color: const Color(0xFF9C9C9C),
-                                            fontSize: 10.sp,
-                                            fontFamily: "Roboto",
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.normal),
-                                      ),
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Text(
-                                        controller.productLists.value[index].price!.toString(),
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 11.sp,
-                                            fontFamily: "Roboto",
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-
-                                      Row(
-                                        children: [
-
-                                        ],
-                                      ),
-
-
-
-
-                                    ],
-                                  ),
-                                )),
-                          ],
-                        ),
-                      ),
-                    );
+                    return CustomProductCard(controller: controller, index: index,);
                   },
                 );
               }),
             ),
-
-
-
             showMoreButton(),
-
             buildProductTitle(
                 context: context,
                 color: Colors.blueAccent,
                 title: "Regular",
                 subtitle:
-                "২ ঘন্টার মধ্যে জরুরি প্রয়োজনীয় পণ্যসমূহ সরবরাহ করা হয় সকাল ১০টা-রাত ১০টা পর্যন্ত ।"),
+                    "২ ঘন্টার মধ্যে জরুরি প্রয়োজনীয় পণ্যসমূহ সরবরাহ করা হয় সকাল ১০টা-রাত ১০টা পর্যন্ত ।"),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 1.w),
+              child: GetX<HomeTabController>(builder: (controller) {
+                return GridView.builder(
+                  itemCount: controller.productLists.value.length-10,
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: (1 / 1.526),
+                    crossAxisSpacing: 4.w,
+                    mainAxisSpacing: 7.w,
+                  ),
+                  itemBuilder: (context, index) {
+                    return CustomProductCard(controller: controller, index: index+10,);
+                  },
+                );
+              }),
+            ),
             showMoreButton(),
             buildProductTitle(
                 context: context,
                 color: Colors.purple,
                 title: "Preorder Items",
                 subtitle:
-                "বাজার দরের চেয়ে কম মূল্যে মৌসুমি পণ্য, ঐতিহ্যবাহী খাবার এবং মাসের বাজার সরবরাহ করা হয় ২-৭ দিনে ।"),
+                    "বাজার দরের চেয়ে কম মূল্যে মৌসুমি পণ্য, ঐতিহ্যবাহী খাবার এবং মাসের বাজার সরবরাহ করা হয় ২-৭ দিনে ।"),
             buildShodaiMamaBBQFestCard(context: context, matchParent: true),
             showMoreButton()
-
           ],
         ),
       ),
     );
   }
 
-
-  Widget buildShodaiMamaBBQFestCard({required BuildContext context, bool matchParent=false}) {
+  Widget buildShodaiMamaBBQFestCard(
+      {required BuildContext context, bool matchParent = false}) {
     return Material(
       child: InkWell(
         onTap: () {},
         child: Container(
           margin: const EdgeInsets.all(8),
-          width: matchParent?double.infinity:MediaQuery.of(context).size.width / 1.65,
-          height: matchParent?290:190,
+          width: matchParent
+              ? double.infinity
+              : MediaQuery.of(context).size.width / 1.65,
+          height: matchParent ? 290 : 190,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(5),
@@ -245,11 +180,10 @@ class HomeTab extends StatelessWidget {
               ]),
           child: Column(
             children: [
-              Expanded(
-                  child: Image.asset("assets/resources/smbbqfest.jpeg")),
+              Expanded(child: Image.asset("assets/resources/smbbqfest.jpeg")),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Row(
                   children: const [
                     Text(
@@ -276,7 +210,8 @@ class HomeTab extends StatelessWidget {
   }
 
   Widget buildProductTitle(
-      {required BuildContext context, required Color color,
+      {required BuildContext context,
+      required Color color,
       required String title,
       required String subtitle}) {
     return SizedBox(
@@ -325,15 +260,14 @@ class HomeTab extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: GestureDetector(
-        onTap: (){},
+        onTap: () {},
         child: Container(
           width: 100,
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(color: const Color(0xFF9C9C9C))
-          ),
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(color: const Color(0xFF9C9C9C))),
           child: Row(
             children: const [
               Text(
@@ -355,5 +289,4 @@ class HomeTab extends StatelessWidget {
       ),
     );
   }
-
 }
