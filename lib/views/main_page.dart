@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shodai_mama_task/controllers/main_controller.dart';
+import 'package:shodai_mama_task/views/components/custom_floating_action_button.dart';
 import 'package:shodai_mama_task/views/tabs/fresh_tab.dart';
 import 'package:shodai_mama_task/views/tabs/preorder_tab.dart';
 import 'package:shodai_mama_task/views/tabs/regular_tab.dart';
@@ -16,25 +17,29 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: const Color(0xffC4DFCB),
       appBar: AppBar(
         leading: const Icon(
           Icons.menu,
         ),
-        title: const Text(
-          "Geeks For Geeks",
-        ),
-        titleSpacing: 0,
+        title: Obx(()=>Text(
+          getAppBarTitle() ,
+        )),
       ),
       body: getBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
-        child: Icon(Icons.ten_k),
-      ),
+      floatingActionButton: CustomFloatingActionButton(),
+
       bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 
+  String getAppBarTitle() {
+    return [
+      "Home",
+      "Fresh",
+      "Regular",
+      "Preorder"
+    ][mainController.currentIndex.value];
+  }
 
   Widget getBody() {
     List<Widget> pages = [
@@ -44,11 +49,8 @@ class MainPage extends StatelessWidget {
       const PreorderTab(),
     ];
     return Obx(() => IndexedStack(
-      index: mainController.currentIndex.value,
-      children: pages,
-    ));
+          index: mainController.currentIndex.value,
+          children: pages,
+        ));
   }
-
 }
-
-

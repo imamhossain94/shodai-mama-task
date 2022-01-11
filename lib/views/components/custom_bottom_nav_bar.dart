@@ -3,14 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shodai_mama_task/controllers/main_controller.dart';
 
-class CustomBottomNavBar extends StatefulWidget {
-  const CustomBottomNavBar({Key? key}) : super(key: key);
+class CustomBottomNavBar extends StatelessWidget {
+  CustomBottomNavBar({Key? key}) : super(key: key);
 
-  @override
-  _CustomBottomNavBarState createState() => _CustomBottomNavBarState();
-}
-
-class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   final mainController = Get.put(MainController());
 
   @override
@@ -74,12 +69,12 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           child: Container(
             alignment: Alignment.center,
             color: mainController.currentIndex.value == index
-                ? Theme.of(context).primaryColor
+                ? const Color(0xFF00402F)
                 : Colors.white,
             child: Icon(
               icon,
               color: mainController.currentIndex.value != index
-                  ? Theme.of(context).primaryColor
+                  ? const Color(0xFF00402F)
                   : Colors.white,
             ),
           ),
@@ -98,13 +93,13 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             alignment: Alignment.center,
             margin: const EdgeInsets.symmetric(vertical: 3),
             color: mainController.currentIndex.value == index
-                ? Theme.of(context).primaryColor
+                ? const Color(0xFF00402F)
                 : Colors.white,
             child: Text(
               title,
               style: TextStyle(
                 color: mainController.currentIndex.value != index
-                    ? Theme.of(context).primaryColor
+                    ? const Color(0xFF00402F)
                     : Colors.white,
               ),
             ),
