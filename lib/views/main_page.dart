@@ -24,6 +24,9 @@ class MainPage extends StatelessWidget {
         title: Obx(()=>Text(
           getAppBarTitle() ,
         )),
+        actions: [
+
+        ],
       ),
       body: getBody(),
       floatingActionButton: CustomFloatingActionButton(),

@@ -13,19 +13,20 @@ class CustomFloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(()=>AnimatedContainer(
-      height: 50,
-      width: cartController.containerWidth.value,
-      curve: Curves.fastLinearToSlowEaseIn,
-      child: collapseButton(
-          icon: FontAwesomeIcons.shoppingCart, onPressed: () {
-        cartController.updateWidth();
-      }),
-      duration: const Duration(milliseconds: 200),
-      onEnd: () {
-        cartController.updateContainerState();
-      },
-    ));
+    return Obx(() => AnimatedContainer(
+          height: 50,
+          width: cartController.containerWidth.value,
+          curve: Curves.fastLinearToSlowEaseIn,
+          child: collapseButton(
+              icon: FontAwesomeIcons.shoppingCart,
+              onPressed: () {
+                cartController.updateWidth();
+              }),
+          duration: const Duration(milliseconds: 200),
+          onEnd: () {
+            cartController.updateContainerState();
+          },
+        ));
   }
 
   Widget collapseButton(
@@ -37,47 +38,52 @@ class CustomFloatingActionButton extends StatelessWidget {
         width: cartController.containerWidth.value,
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
         decoration: BoxDecoration(
-          color: !cartController.isCollapse.value? Colors.white: const Color(0xFF00402F),
-          borderRadius: BorderRadius.circular(25),
-          border: Border.all(color: const Color(0xFF00402F), width: 2.0)
-        ),
+            color: !cartController.isCollapse.value
+                ? Colors.white
+                : const Color(0xFF00402F),
+            borderRadius: BorderRadius.circular(25),
+            border: Border.all(color: const Color(0xFF00402F), width: 2.0)),
         alignment: Alignment.center,
-        child: cartController.isCollapse.value? Icon(
-          icon,
-          size: 18,
-          color: Colors.white,
-        ): Row(
-          children: [
-            Expanded(
-                child: Column(
-                  children: [
-                    Text("Items: 5", style: TextStyle(color: const Color(0xFF00402F)),),
-                    Text("Total: ৳561", style: TextStyle(color: const Color(0xFF00402F)),)
-                  ],
-                )
-            ),
-            const VerticalDivider(thickness: 2,),
-            Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    print("hello");
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF00402F),
-                        borderRadius: BorderRadius.circular(5)
-                    ),
-                    child: Text("PLACE ORDER", style: TextStyle(color: Colors.white),)
+        child: cartController.isCollapse.value
+            ? Icon(
+                icon,
+                size: 18,
+                color: Colors.white,
+              )
+            : Row(
+                children: [
+                  Expanded(
+                      child: Column(
+                    children: [
+                      Text(
+                        "Items: ${cartController.count}",
+                        style: const TextStyle(color: Color(0xFF00402F)),
+                      ),
+                      Text(
+                        "Total: ৳${cartController.totalPrice}",
+                        style: const TextStyle(color: Color(0xFF00402F)),
+                      )
+                    ],
+                  )),
+                  const VerticalDivider(
+                    thickness: 2,
                   ),
-                )
-            )
-          ],
-        ),
+                  Expanded(
+                      child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: const Color(0xFF00402F),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: const Text(
+                          "PLACE ORDER",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                  ))
+                ],
+              ),
       ),
     );
   }
-
-
-
 }
