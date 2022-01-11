@@ -3,9 +3,14 @@ import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:shodai_mama_task/controllers/home_tab_controller.dart';
+import 'package:sizer/sizer.dart';
 
 class HomeTab extends StatelessWidget {
   HomeTab({Key? key}) : super(key: key);
+
+  final homeTabController = Get.put(HomeTabController());
 
   final List<String> images = [
     "assets/resources/slide1.jpeg",
@@ -91,6 +96,109 @@ class HomeTab extends StatelessWidget {
                 subtitle:
                     "গুনগত মান বজায় রাখার জন্য পচনশীল খাদ্যপণ্য সরবরাহ করা হয় সকাল ৮-১১ টা পর্যন্ত ।"),
 
+
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 1.w),
+              child: GetX<HomeTabController>(builder: (controller) {
+                return GridView.builder(
+                  itemCount: controller.productLists.value.length,
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: (1 / 1.526),
+                    crossAxisSpacing: 4.w,
+                    mainAxisSpacing: 7.w,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Card(
+                      elevation: 1,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                                flex: 3,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.network(
+                                    controller.productLists.value[index].image!,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
+                            Expanded(
+                                flex: 5,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(3.w, 1.h, 2.w, 1.h),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        controller.productLists.value[index].title!,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 10.sp,
+                                            fontFamily: "Roboto",
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      SizedBox(
+                                        height: 2.h,
+                                      ),
+                                      Text(
+                                        "each",
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            color: const Color(0xFF9C9C9C),
+                                            fontSize: 10.sp,
+                                            fontFamily: "Roboto",
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      SizedBox(
+                                        height: 2.h,
+                                      ),
+                                      Text(
+                                        controller.productLists.value[index].price!.toString(),
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 11.sp,
+                                            fontFamily: "Roboto",
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+
+                                      Row(
+                                        children: [
+
+                                        ],
+                                      ),
+
+
+
+
+                                    ],
+                                  ),
+                                )),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }),
+            ),
+
+
+
             showMoreButton(),
 
             buildProductTitle(
@@ -166,7 +274,6 @@ class HomeTab extends StatelessWidget {
       ),
     );
   }
-
 
   Widget buildProductTitle(
       {required BuildContext context, required Color color,
@@ -248,7 +355,5 @@ class HomeTab extends StatelessWidget {
       ),
     );
   }
-
-
 
 }

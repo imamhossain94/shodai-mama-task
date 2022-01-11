@@ -18,6 +18,7 @@ dependencies:
   sizer: ^2.0.15
   badges: ^2.0.2
   flutter_carousel_slider: ^1.0.8
+  cart_stepper: ^2.0.2
 
   font_awesome_flutter: ^9.2.0
   cupertino_icons: ^1.0.2
