@@ -1,5 +1,8 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:shodai_mama_task/controllers/cart_controller.dart';
 import 'package:shodai_mama_task/controllers/main_controller.dart';
 import 'package:shodai_mama_task/views/components/custom_floating_action_button.dart';
 import 'package:shodai_mama_task/views/tabs/fresh_tab.dart';
@@ -13,6 +16,7 @@ class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
 
   final mainController = Get.put(MainController());
+  final cartController = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,8 @@ class MainPage extends StatelessWidget {
           getAppBarTitle() ,
         )),
         actions: [
-
+          IconButton(onPressed: (){}, icon: const Icon(FontAwesomeIcons.search, size: 20,)),
+          shoppingCartBadge()
         ],
       ),
       body: getBody(),
@@ -56,4 +61,24 @@ class MainPage extends StatelessWidget {
           children: pages,
         ));
   }
+
+
+  Widget shoppingCartBadge() {
+    return Badge(
+      position: BadgePosition.topEnd(top: 5, end: 3),
+      animationDuration: const Duration(milliseconds: 100),
+      animationType: BadgeAnimationType.scale,
+      shape: BadgeShape.circle,
+      badgeContent: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 1),
+        child: Text(
+          cartController.count.toString(),
+          style: const TextStyle(color: Colors.white),
+        ),
+      ),
+      child: IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}),
+    );
+  }
+
+
 }
