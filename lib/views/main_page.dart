@@ -35,7 +35,6 @@ class MainPage extends StatelessWidget {
       ),
       body: getBody(),
       floatingActionButton: CustomFloatingActionButton(),
-
       bottomNavigationBar: CustomBottomNavBar(),
     );
   }

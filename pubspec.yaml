@@ -17,6 +17,7 @@ dependencies:
   http: ^0.13.4
   sizer: ^2.0.15
   badges: ^2.0.2
+  carousel_slider: ^4.0.0
 
   font_awesome_flutter: ^9.2.0
   cupertino_icons: ^1.0.2
