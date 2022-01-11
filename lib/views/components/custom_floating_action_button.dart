@@ -36,13 +36,14 @@ class CustomFloatingActionButton extends StatelessWidget {
       child: Container(
         height: 50,
         width: cartController.containerWidth.value,
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+        padding: !cartController.isCollapse.value
+            ? const EdgeInsets.symmetric(vertical: 8, horizontal: 15): EdgeInsets.zero,
         decoration: BoxDecoration(
             color: !cartController.isCollapse.value
                 ? Colors.white
-                : const Color(0xFF00402F),
+                : const Color(0xFF006A4E),
             borderRadius: BorderRadius.circular(25),
-            border: Border.all(color: const Color(0xFF00402F), width: 2.0)),
+            border: Border.all(color: const Color(0xFF006A4E), width: 2.0)),
         alignment: Alignment.center,
         child: cartController.isCollapse.value
             ? Icon(
@@ -57,11 +58,11 @@ class CustomFloatingActionButton extends StatelessWidget {
                     children: [
                       Text(
                         "Items: ${cartController.count}",
-                        style: const TextStyle(color: Color(0xFF00402F)),
+                        style: const TextStyle(color: Color(0xFF006A4E)),
                       ),
                       Text(
                         "Total: ৳${cartController.totalPrice}",
-                        style: const TextStyle(color: Color(0xFF00402F)),
+                        style: const TextStyle(color: Color(0xFF006A4E)),
                       )
                     ],
                   )),
@@ -74,7 +75,7 @@ class CustomFloatingActionButton extends StatelessWidget {
                     child: Container(
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                            color: const Color(0xFF00402F),
+                            color: const Color(0xFF006A4E),
                             borderRadius: BorderRadius.circular(5)),
                         child: const Text(
                           "PLACE ORDER",

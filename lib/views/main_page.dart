@@ -50,7 +50,7 @@ class MainPage extends StatelessWidget {
 
   Widget getBody() {
     List<Widget> pages = [
-      const HomeTab(),
+      HomeTab(),
       const FreshTab(),
       const RegularTab(),
       const PreorderTab(),
