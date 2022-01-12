@@ -1,10 +1,24 @@
+import 'package:hive/hive.dart';
+import 'rating.dart';
+
+part 'product.g.dart';
+
+
+@HiveType(typeId: 0)
 class Product {
+  @HiveField(0)
   int? id;
+  @HiveField(1)
   String? title;
+  @HiveField(2)
   num? price;
+  @HiveField(3)
   String? description;
+  @HiveField(4)
   String? category;
+  @HiveField(5)
   String? image;
+  @HiveField(6)
   Rating? rating;
 
   Product(
@@ -42,21 +56,3 @@ class Product {
   }
 }
 
-class Rating {
-  num? rate;
-  int? count;
-
-  Rating({this.rate, this.count});
-
-  Rating.fromJson(Map<String, dynamic> json) {
-    rate = json['rate'];
-    count = json['count'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['rate'] = rate;
-    data['count'] = count;
-    return data;
-  }
-}
