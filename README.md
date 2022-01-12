@@ -5,7 +5,7 @@ Shodai Mama Flutter assignment done with GetX & MVC pattern.
 
 ![Demo](https://github.com/imamhossain94/shodai-mama-task/blob/main/screenshots/app_demo.gif)
 
-<div align="center">
+<div align="left">
 
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](#)
 [![GitHub Forks](https://img.shields.io/github/forks/saadhaxxan/Car_Game_Python_Pygame.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/imamhossain94/shodai-mama-task/fork)
