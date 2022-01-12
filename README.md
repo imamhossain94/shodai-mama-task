@@ -3,6 +3,25 @@
 Shodai Mama Flutter assignment done with GetX & MVC pattern.
 
 
+<p align="center">
+  <img alt="Light" src="" width="48%">
+</p>
+
+<div align="center">
+
+[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](#)
+[![GitHub Forks](https://img.shields.io/github/forks/saadhaxxan/Car_Game_Python_Pygame.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/imamhossain94/shodai-mama-task/fork)
+[![GitHub Issues](https://img.shields.io/github/issues/saadhaxxan/Car_Game_Python_Pygame.svg?style=flat&label=Issues&maxAge=2592000)](https://github.com/imamhossain94/shodai-mama-task/issues)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&label=Contributions&colorA=red&colorB=black	)](#)
+
+</div>
+
+
+
+## 📁 Download Now
+
+Get it from <a href="https://drive.google.com/file/d/1Tnu5tCqak37Fis11FBClPpdMu42veXIj/view?usp=sharing">Google drive</a>
+
 ## Task
 ```text
 Task 01: Design
@@ -41,6 +60,17 @@ Make a cart using local storage. Make the Add To Cart Button interactive. Save t
 
 </p>
 
+
+## Task Done
+
+:heavy_check_mark: Image Slider\
+:heavy_check_mark: Cart Icon with Badge in AppBar\
+:heavy_check_mark: Animated FAB Button\
+:heavy_check_mark: Hide FAB button on scroll\
+:heavy_check_mark: Add To Cart Stepper\
+:heavy_check_mark: Fetched Fake Products\
+:heavy_check_mark: Store Cart Item in Local Storage using Hive Database\
+:heavy_check_mark: Responsiveness!!
 
 
 
