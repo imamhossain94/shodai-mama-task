@@ -24,114 +24,130 @@ class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 180,
-              child: CarouselSlider.builder(
-                  unlimitedMode: true,
-                  slideBuilder: (index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(images[index]),
-                              fit: BoxFit.fill)),
-                    );
-                  },
-                  enableAutoSlider: true,
-                  slideTransform: const ParallaxTransform(),
-                  slideIndicator: CircularSlideIndicator(
-                    indicatorRadius: 3,
-                    itemSpacing: 10,
-                    padding: const EdgeInsets.only(bottom: 12),
-                  ),
-                  itemCount: images.length),
-            ),
-            Container(
-              height: 50,
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              color: const Color(0xFF006A4E),
-              child: Row(
-                children: const [
-                  Icon(
-                    FontAwesomeIcons.mapMarkerAlt,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Expanded(
-                      child: Text(
-                    "Adabor",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  )),
-                  Icon(
-                    FontAwesomeIcons.solidMap,
-                    color: Colors.white,
-                  )
-                ],
+      body: NotificationListener<ScrollNotification>(
+        onNotification: (ScrollNotification scrollNotification) {
+          if (scrollNotification is ScrollStartNotification) {
+            homeTabController.isScrolled(true);
+          } else if (scrollNotification is ScrollUpdateNotification) {
+            homeTabController.isScrolled(true);
+          } else if (scrollNotification is ScrollEndNotification) {
+            homeTabController.isScrolled(false);
+          }
+          return true;
+        },
+        child: SingleChildScrollView(
+          controller: homeTabController.scrollController,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 180,
+                child: NotificationListener(
+                  onNotification: (_) => true,
+                  child: CarouselSlider.builder(
+                      unlimitedMode: true,
+                      slideBuilder: (index) {
+                        return Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(images[index]),
+                                  fit: BoxFit.fill)),
+                        );
+                      },
+                      enableAutoSlider: true,
+                      slideTransform: const ParallaxTransform(),
+                      slideIndicator: CircularSlideIndicator(
+                        indicatorRadius: 3,
+                        itemSpacing: 10,
+                        padding: const EdgeInsets.only(bottom: 12),
+                      ),
+                      itemCount: images.length),
+                ),
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(8, 12, 8, 4),
-              child: Text(
-                "ShodaiMama Offers",
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Color(0xFF212121),
-                    fontWeight: FontWeight.bold),
+              Container(
+                height: 50,
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                color: const Color(0xFF006A4E),
+                child: Row(
+                  children: const [
+                    Icon(
+                      FontAwesomeIcons.mapMarkerAlt,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Expanded(
+                        child: Text(
+                      "Adabor",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    )),
+                    Icon(
+                      FontAwesomeIcons.solidMap,
+                      color: Colors.white,
+                    )
+                  ],
+                ),
               ),
-            ),
-            // This could be much batter. but task is task
-            buildShodaiMamaBBQFestCard(context: context),
-            buildProductTitle(
-                context: context,
-                color: Colors.green,
-                title: "Fresh",
-                subtitle:
-                    "গুনগত মান বজায় রাখার জন্য পচনশীল খাদ্যপণ্য সরবরাহ করা হয় সকাল ৮-১১ টা পর্যন্ত ।"),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 1.w),
-              child: GetX<HomeTabController>(builder: (controller) {
-                return GridView.builder(
-                  itemCount: controller.productLists.value.length,
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: (1 / 1.526),
-                    crossAxisSpacing: 4.w,
-                    mainAxisSpacing: 7.w,
-                  ),
-                  itemBuilder: (context, index) {
-                    return CustomProductCard(controller: controller, index: index,);
-                  },
-                );
-              }),
-            ),
-            showMoreButton(),
-            buildProductTitle(
-                context: context,
-                color: Colors.blueAccent,
-                title: "Regular",
-                subtitle:
-                    "২ ঘন্টার মধ্যে জরুরি প্রয়োজনীয় পণ্যসমূহ সরবরাহ করা হয় সকাল ১০টা-রাত ১০টা পর্যন্ত ।"),
-            showMoreButton(),
-            buildProductTitle(
-                context: context,
-                color: Colors.purple,
-                title: "Preorder Items",
-                subtitle:
-                    "বাজার দরের চেয়ে কম মূল্যে মৌসুমি পণ্য, ঐতিহ্যবাহী খাবার এবং মাসের বাজার সরবরাহ করা হয় ২-৭ দিনে ।"),
-            buildShodaiMamaBBQFestCard(context: context, matchParent: true),
-            showMoreButton()
-          ],
+              const Padding(
+                padding: EdgeInsets.fromLTRB(8, 12, 8, 4),
+                child: Text(
+                  "ShodaiMama Offers",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFF212121),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              // This could be much batter. but task is task
+              buildShodaiMamaBBQFestCard(context: context),
+              buildProductTitle(
+                  context: context,
+                  color: Colors.green,
+                  title: "Fresh",
+                  subtitle:
+                      "গুনগত মান বজায় রাখার জন্য পচনশীল খাদ্যপণ্য সরবরাহ করা হয় সকাল ৮-১১ টা পর্যন্ত ।"),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 1.w),
+                child: GetX<HomeTabController>(builder: (controller) {
+                  return GridView.builder(
+                    itemCount: controller.productLists.value.length,
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: (1 / 1.526),
+                      crossAxisSpacing: 4.w,
+                      mainAxisSpacing: 7.w,
+                    ),
+                    itemBuilder: (context, index) {
+                      return CustomProductCard(controller: controller, index: index,);
+                    },
+                  );
+                }),
+              ),
+              showMoreButton(),
+              buildProductTitle(
+                  context: context,
+                  color: Colors.blueAccent,
+                  title: "Regular",
+                  subtitle:
+                      "২ ঘন্টার মধ্যে জরুরি প্রয়োজনীয় পণ্যসমূহ সরবরাহ করা হয় সকাল ১০টা-রাত ১০টা পর্যন্ত ।"),
+              showMoreButton(),
+              buildProductTitle(
+                  context: context,
+                  color: Colors.purple,
+                  title: "Preorder Items",
+                  subtitle:
+                      "বাজার দরের চেয়ে কম মূল্যে মৌসুমি পণ্য, ঐতিহ্যবাহী খাবার এবং মাসের বাজার সরবরাহ করা হয় ২-৭ দিনে ।"),
+              buildShodaiMamaBBQFestCard(context: context, matchParent: true),
+              showMoreButton()
+            ],
+          ),
         ),
       ),
     );

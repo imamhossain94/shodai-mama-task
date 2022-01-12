@@ -8,8 +8,6 @@ class CustomFloatingActionButton extends StatelessWidget {
 
   final cartController = Get.put(CartController());
 
-  // double containerWidth = 50.0;
-  // bool isCollapse = true;
 
   @override
   Widget build(BuildContext context) {

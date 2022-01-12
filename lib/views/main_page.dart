@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shodai_mama_task/controllers/cart_controller.dart';
+import 'package:shodai_mama_task/controllers/home_tab_controller.dart';
 import 'package:shodai_mama_task/controllers/main_controller.dart';
 import 'package:shodai_mama_task/views/components/custom_floating_action_button.dart';
 import 'package:shodai_mama_task/views/tabs/fresh_tab.dart';
@@ -17,6 +18,8 @@ class MainPage extends StatelessWidget {
 
   final mainController = Get.put(MainController());
   final cartController = Get.put(CartController());
+  final homeTabController = Get.put(HomeTabController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,10 @@ class MainPage extends StatelessWidget {
         ],
       ),
       body: getBody(),
-      floatingActionButton: CustomFloatingActionButton(),
+      floatingActionButton: Obx(()=>Opacity(
+          opacity: homeTabController.isScrolled.value?0:1,
+          child: CustomFloatingActionButton()
+      )),
       bottomNavigationBar: CustomBottomNavBar(),
     );
   }
