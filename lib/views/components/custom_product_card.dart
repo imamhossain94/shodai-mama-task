@@ -1,24 +1,23 @@
+import 'package:cart_stepper/cart_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shodai_mama_task/controllers/home_tab_controller.dart';
 import 'package:sizer/sizer.dart';
-import 'package:cart_stepper/cart_stepper.dart';
 
 class CustomProductCard extends StatefulWidget {
-  
   final HomeTabController controller;
   final int index;
-  
-  const CustomProductCard({Key? key, required this.controller, required this.index}) : super(key: key);
+
+  const CustomProductCard(
+      {Key? key, required this.controller, required this.index})
+      : super(key: key);
 
   @override
   _CustomProductCardState createState() => _CustomProductCardState();
 }
 
 class _CustomProductCardState extends State<CustomProductCard> {
-
   int _counter = 0;
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,22 +38,22 @@ class _CustomProductCardState extends State<CustomProductCard> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.network(
-                        widget.controller.productLists.value[widget.index].image!,
+                        widget
+                            .controller.productLists.value[widget.index].image!,
                         fit: BoxFit.cover,
                       ),
                     )),
                 Expanded(
                     flex: 5,
                     child: Column(
-                      crossAxisAlignment:
-                      CrossAxisAlignment.stretch,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Center(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              widget.controller
-                                  .productLists.value[widget.index].title!,
+                              widget.controller.productLists.value[widget.index]
+                                  .title!,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -87,8 +86,8 @@ class _CustomProductCardState extends State<CustomProductCard> {
                         Center(
                           child: Text(
                             "৳ " +
-                                widget.controller
-                                    .productLists.value[widget.index].price!
+                                widget.controller.productLists
+                                    .value[widget.index].price!
                                     .toString(),
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -103,8 +102,7 @@ class _CustomProductCardState extends State<CustomProductCard> {
                           height: 2.h,
                         ),
                         Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
                             Icon(
                               FontAwesomeIcons.motorcycle,
@@ -117,12 +115,10 @@ class _CustomProductCardState extends State<CustomProductCard> {
                             Text(
                               "Next Morning",
                               style: TextStyle(
-                                  fontSize: 12,
-                                  color: Color(0xFF9C9C9C)),
+                                  fontSize: 12, color: Color(0xFF9C9C9C)),
                             ),
                           ],
                         ),
-
                       ],
                     )),
               ],
@@ -134,47 +130,62 @@ class _CustomProductCardState extends State<CustomProductCard> {
                 padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
                 decoration: BoxDecoration(
                     color: Colors.green,
-                    borderRadius: BorderRadius.circular(3)
+                    borderRadius: BorderRadius.circular(3)),
+                child: Row(
+                  children: [
+                    const Icon(FontAwesomeIcons.solidStar, size: 10, color: Colors.yellow,),
+                    const SizedBox(width: 5,),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 2),
+                      child: Text(
+                        widget
+                            .controller.productLists.value[widget.index].rating!.rate
+                            .toString(),
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
                 ),
-                child: Text(widget.controller.productLists.value[widget.index].rating!.rate.toString(), style: TextStyle(color: Colors.white),),
               ),
             ),
             Positioned(
               bottom: 0,
               left: 0,
               right: 0,
-              child: _counter > 0? CartStepperInt(
-                count: _counter,
-                radius: Radius.zero,
-                size: 40,
-                elevation: 0,
-                deActiveForegroundColor: Colors.black,
-                activeForegroundColor: Colors.white,
-                activeBackgroundColor: Colors.deepOrangeAccent,
-                didChangeCount: (count) {
-                  setState(() {
-                    _counter = count;
-                  });
-                },
-              ): GestureDetector(
-                onTap: (){
-                  setState(() {
-                    _counter++;
-                  });
-                },
-                child: Container(
-                  height: 40,
-                  color: const Color(0xFF006A4E),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "Add To Card",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+              child: _counter > 0
+                  ? CartStepperInt(
+                      count: _counter,
+                      radius: Radius.zero,
+                      size: 40,
+                      elevation: 0,
+                      deActiveForegroundColor: Colors.black,
+                      activeForegroundColor: Colors.white,
+                      activeBackgroundColor: Colors.deepOrangeAccent,
+                      didChangeCount: (count) {
+                        setState(() {
+                          _counter = count;
+                        });
+                      },
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _counter++;
+                        });
+                      },
+                      child: Container(
+                        height: 40,
+                        color: const Color(0xFF006A4E),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          "Add To Card",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
             )
           ],
         ),
@@ -186,5 +197,4 @@ class _CustomProductCardState extends State<CustomProductCard> {
 
 
 
-  
 }
