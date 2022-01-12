@@ -160,7 +160,8 @@ class _CustomProductCardState extends State<CustomProductCard> {
                 ),
                 child: Text(widget.controller.productLists.value[widget.index].rating!.rate.toString(), style: TextStyle(color: Colors.white),),
               ),
-            )
+            ),
+
           ],
         ),
       ),

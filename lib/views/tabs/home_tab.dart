@@ -100,7 +100,7 @@ class HomeTab extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 1.w),
               child: GetX<HomeTabController>(builder: (controller) {
                 return GridView.builder(
-                  itemCount: controller.productLists.value.length-10,
+                  itemCount: controller.productLists.value.length,
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -122,25 +122,6 @@ class HomeTab extends StatelessWidget {
                 title: "Regular",
                 subtitle:
                     "২ ঘন্টার মধ্যে জরুরি প্রয়োজনীয় পণ্যসমূহ সরবরাহ করা হয় সকাল ১০টা-রাত ১০টা পর্যন্ত ।"),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 1.w),
-              child: GetX<HomeTabController>(builder: (controller) {
-                return GridView.builder(
-                  itemCount: controller.productLists.value.length-10,
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: (1 / 1.526),
-                    crossAxisSpacing: 4.w,
-                    mainAxisSpacing: 7.w,
-                  ),
-                  itemBuilder: (context, index) {
-                    return CustomProductCard(controller: controller, index: index+10,);
-                  },
-                );
-              }),
-            ),
             showMoreButton(),
             buildProductTitle(
                 context: context,
