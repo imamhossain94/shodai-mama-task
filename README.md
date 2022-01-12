@@ -3,9 +3,7 @@
 Shodai Mama Flutter assignment done with GetX & MVC pattern.
 
 
-<p align="center">
-  ![Demo](https://github.com/imamhossain94/shodai-mama-task/blob/main/screenshots/app_demo.gif)
-</p>
+![Demo](https://github.com/imamhossain94/shodai-mama-task/blob/main/screenshots/app_demo.gif)
 
 <div align="center">
 
