@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shodai_mama_task/controllers/cart_controller.dart';
+import 'package:sizer/sizer.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
   CustomFloatingActionButton({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class CustomFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => AnimatedContainer(
-          height: 50,
+          height: 7.5.h,
           width: cartController.containerWidth.value,
           curve: Curves.fastLinearToSlowEaseIn,
           child: collapseButton(
@@ -32,21 +33,21 @@ class CustomFloatingActionButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 50,
+        height: 7.5.h,
         width: cartController.containerWidth.value,
         padding: !cartController.isCollapse.value
-            ? const EdgeInsets.symmetric(vertical: 8, horizontal: 15): EdgeInsets.zero,
+            ? EdgeInsets.symmetric(vertical: 0.8.h, horizontal: 5.w): EdgeInsets.zero,
         decoration: BoxDecoration(
             color: !cartController.isCollapse.value
                 ? Colors.white
                 : const Color(0xFF006A4E),
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(3.75.h),
             border: Border.all(color: const Color(0xFF006A4E), width: 2.0)),
         alignment: Alignment.center,
         child: cartController.isCollapse.value
             ? Icon(
                 icon,
-                size: 18,
+                size: 18.sp,
                 color: Colors.white,
               )
             : Row(
@@ -56,11 +57,11 @@ class CustomFloatingActionButton extends StatelessWidget {
                     children: [
                       Text(
                         "Items: ${cartController.count}",
-                        style: const TextStyle(color: Color(0xFF006A4E)),
+                        style: TextStyle(color: const Color(0xFF006A4E), fontSize: 10.sp),
                       ),
                       Text(
                         "Total: ৳${cartController.totalPrice.toStringAsFixed(2)}",
-                        style: const TextStyle(color: Color(0xFF006A4E)),
+                        style: TextStyle(color: const Color(0xFF006A4E), fontSize: 10.sp),
                       )
                     ],
                   )),
@@ -75,9 +76,9 @@ class CustomFloatingActionButton extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: const Color(0xFF006A4E),
                             borderRadius: BorderRadius.circular(5)),
-                        child: const Text(
+                        child: Text(
                           "PLACE ORDER",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white, fontSize: 10.sp),
                         )),
                   ))
                 ],

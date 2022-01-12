@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shodai_mama_task/controllers/main_controller.dart';
+import 'package:sizer/sizer.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   CustomBottomNavBar({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 8.h,
       decoration: BoxDecoration(color: Colors.white, boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),
@@ -73,6 +74,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 : Colors.white,
             child: Icon(
               icon,
+              size: 20.sp,
               color: mainController.currentIndex.value != index
                   ? const Color(0xFF00402F)
                   : Colors.white,
@@ -98,6 +100,7 @@ class CustomBottomNavBar extends StatelessWidget {
             child: Text(
               title,
               style: TextStyle(
+                fontSize: 14.sp,
                 color: mainController.currentIndex.value != index
                     ? const Color(0xFF00402F)
                     : Colors.white,
@@ -108,9 +111,9 @@ class CustomBottomNavBar extends StatelessWidget {
   }
 
   Widget buildVerticalDivider() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: VerticalDivider(
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 1.2.h),
+      child: const VerticalDivider(
         width: 0.75,
         thickness: 1,
         color: Color(0xFF00402F),

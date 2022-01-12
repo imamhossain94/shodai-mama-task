@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:shodai_mama_task/models/product.dart';
 import 'package:shodai_mama_task/services/hive_helper.dart';
+import 'package:sizer/sizer.dart';
 
 class CartController extends GetxController {
-  var containerWidth = 50.0.obs;
+  var containerWidth = 7.5.h.obs;
   var isCollapse = true.obs;
 
   var cartItems = <Product>[].obs;
@@ -24,16 +25,16 @@ class CartController extends GetxController {
 
 
   void updateWidth() {
-    if(containerWidth.value == 50.0){
-      containerWidth.value = 250.0;
+    if(containerWidth.value == 7.5.h){
+      containerWidth.value = 75.w;
     }else{
       isCollapse.value = true;
-      containerWidth.value = 50.0;
+      containerWidth.value = 7.5.h;
     }
   }
 
   void updateContainerState() {
-    if(isCollapse.value == true && containerWidth.value == 250.0){
+    if(isCollapse.value == true && containerWidth.value == 75.w){
       isCollapse.value = false;
     }
   }

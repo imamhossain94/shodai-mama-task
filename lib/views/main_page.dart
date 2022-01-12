@@ -9,6 +9,7 @@ import 'package:shodai_mama_task/views/components/custom_floating_action_button.
 import 'package:shodai_mama_task/views/tabs/fresh_tab.dart';
 import 'package:shodai_mama_task/views/tabs/preorder_tab.dart';
 import 'package:shodai_mama_task/views/tabs/regular_tab.dart';
+import 'package:sizer/sizer.dart';
 
 import 'components/custom_bottom_nav_bar.dart';
 import 'tabs/home_tab.dart';
@@ -25,14 +26,15 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
+        leading: Icon(
           Icons.menu,
+          size: 24.sp,
         ),
         title: Obx(()=>Text(
-          getAppBarTitle() ,
+          getAppBarTitle(),
         )),
         actions: [
-          IconButton(onPressed: (){}, icon: const Icon(FontAwesomeIcons.search, size: 20,)),
+          IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.search, size: 18.sp,)),
           shoppingCartBadge()
         ],
       ),
@@ -70,7 +72,7 @@ class MainPage extends StatelessWidget {
 
   Widget shoppingCartBadge() {
     return Obx(()=> cartController.count > 0?Badge(
-      position: BadgePosition.topEnd(top: 5, end: 3),
+      position: BadgePosition.topEnd(top: 2.w, end: 1.w),
       animationDuration: const Duration(milliseconds: 100),
       animationType: BadgeAnimationType.scale,
       shape: BadgeShape.circle,
@@ -78,11 +80,11 @@ class MainPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 1),
         child: Text(
           cartController.count.toString(),
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontSize: 8.sp),
         ),
       ),
-      child: IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}),
-    ):IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}));
+      child: IconButton(icon: Icon(Icons.shopping_cart, size: 24.sp,), onPressed: () {}),
+    ):IconButton(icon: Icon(Icons.shopping_cart, size: 24.sp,), onPressed: () {}));
   }
 
 
