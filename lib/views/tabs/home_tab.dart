@@ -41,7 +41,7 @@ class HomeTab extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 180,
+                height: 24.h,
                 child: NotificationListener(
                   onNotification: (_) => true,
                   child: CarouselSlider.builder(
@@ -66,40 +66,42 @@ class HomeTab extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 50,
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                height: 7.5.h,
+                padding: EdgeInsets.symmetric(horizontal: 6.w),
                 color: const Color(0xFF006A4E),
                 child: Row(
-                  children: const [
+                  children: [
                     Icon(
                       FontAwesomeIcons.mapMarkerAlt,
                       color: Colors.white,
+                      size: 18.sp,
                     ),
                     SizedBox(
-                      width: 30,
+                      width: 6.w,
                     ),
                     Expanded(
                         child: Text(
                       "Adabor",
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     )),
                     Icon(
                       FontAwesomeIcons.solidMap,
                       color: Colors.white,
+                      size: 18.sp,
                     )
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(8, 12, 8, 4),
+              Padding(
+                padding: EdgeInsets.fromLTRB(2.w, 1.2.h, 2.w, 0.4.h),
                 child: Text(
                   "ShodaiMama Offers",
                   style: TextStyle(
-                      fontSize: 18,
-                      color: Color(0xFF212121),
+                      fontSize: 18.sp,
+                      color: const Color(0xFF212121),
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -159,11 +161,11 @@ class HomeTab extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         child: Container(
-          margin: const EdgeInsets.all(8),
+          margin: EdgeInsets.all(2.w),
           width: matchParent
               ? double.infinity
               : MediaQuery.of(context).size.width / 1.65,
-          height: matchParent ? 290 : 190,
+          height: matchParent ? 39.h : 29.h,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(5),
@@ -182,19 +184,19 @@ class HomeTab extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Row(
-                  children: const [
+                  children: [
                     Text(
                       "সদাইমামা বার-বি-কিউ ফেস্ট",
                       style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFF006A4E),
+                          fontSize: 10.sp,
+                          color: const Color(0xFF006A4E),
                           fontWeight: FontWeight.bold),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Icon(
                       FontAwesomeIcons.chevronRight,
-                      size: 14,
-                      color: Color(0xFF006A4E),
+                      size: 12.sp,
+                      color: const Color(0xFF006A4E),
                     )
                   ],
                 ),
@@ -218,7 +220,7 @@ class HomeTab extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              height: 75,
+              height: 11.5.h,
               width: 7,
               decoration: BoxDecoration(
                   color: color, borderRadius: BorderRadius.circular(10)),
@@ -230,8 +232,8 @@ class HomeTab extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontSize: 18,
+                    style: TextStyle(
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -242,6 +244,9 @@ class HomeTab extends StatelessWidget {
                     width: MediaQuery.of(context).size.width - 40,
                     child: Text(
                       subtitle,
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                      ),
                     ),
                   ),
                 ],
@@ -259,26 +264,26 @@ class HomeTab extends StatelessWidget {
       child: GestureDetector(
         onTap: () {},
         child: Container(
-          width: 100,
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+          width: 30.w,
+          padding: EdgeInsets.symmetric(vertical: 0.8.h, horizontal: 2.w),
           margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               border: Border.all(color: const Color(0xFF9C9C9C))),
           child: Row(
-            children: const [
+            children: [
               Text(
                 "Show More",
                 style: TextStyle(
-                    fontSize: 12,
-                    color: Color(0xFF9C9C9C),
+                    fontSize: 10.sp,
+                    color: const Color(0xFF9C9C9C),
                     fontWeight: FontWeight.bold),
               ),
-              Spacer(),
+              const Spacer(),
               Icon(
                 FontAwesomeIcons.chevronRight,
-                size: 12,
-                color: Color(0xFF9C9C9C),
+                size: 10.sp,
+                color: const Color(0xFF9C9C9C),
               )
             ],
           ),
