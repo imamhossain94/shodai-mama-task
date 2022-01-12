@@ -1,7 +1,10 @@
 import 'package:cart_stepper/cart_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:shodai_mama_task/controllers/cart_controller.dart';
 import 'package:shodai_mama_task/controllers/home_tab_controller.dart';
+import 'package:shodai_mama_task/services/hive_helper.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomProductCard extends StatefulWidget {
@@ -19,9 +22,21 @@ class CustomProductCard extends StatefulWidget {
 class _CustomProductCardState extends State<CustomProductCard> {
   int _counter = 0;
 
+  final cartController = Get.put(CartController());
+
+
+  @override
+  initState(){
+    super.initState();
+    _counter = countCartItemById(widget
+        .controller.productLists.value[widget.index].id!);
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Obx(()=>Card(
       elevation: 1,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
@@ -154,43 +169,53 @@ class _CustomProductCardState extends State<CustomProductCard> {
               right: 0,
               child: _counter > 0
                   ? CartStepperInt(
-                      count: _counter,
-                      radius: Radius.zero,
-                      size: 40,
-                      elevation: 0,
-                      deActiveForegroundColor: Colors.black,
-                      activeForegroundColor: Colors.white,
-                      activeBackgroundColor: Colors.deepOrangeAccent,
-                      didChangeCount: (count) {
-                        setState(() {
-                          _counter = count;
-                        });
-                      },
-                    )
+                count: _counter,
+                radius: Radius.zero,
+                size: 40,
+                elevation: 0,
+                deActiveForegroundColor: Colors.black,
+                activeForegroundColor: Colors.white,
+                activeBackgroundColor: Colors.deepOrangeAccent,
+                didChangeCount: (count) {
+
+                  if(count > _counter){
+                    cartController.addCart(widget.controller.productLists
+                        .value[widget.index]);
+                  }else{
+                    cartController.removeCart(widget.controller.productLists
+                        .value[widget.index]);
+                  }
+                  setState(() {
+                    _counter = count;
+                  });
+                },
+              )
                   : GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _counter++;
-                        });
-                      },
-                      child: Container(
-                        height: 40,
-                        color: const Color(0xFF006A4E),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          "Add To Card",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                onTap: () {
+                  setState(() {
+                    _counter++;
+                  });
+                  cartController.addCart(widget.controller.productLists
+                      .value[widget.index]);
+                },
+                child: Container(
+                  height: 40,
+                  color: const Color(0xFF006A4E),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Add To Card",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
+                  ),
+                ),
+              ),
             )
           ],
         ),
       ),
-    );
+    ));
   }
 
 

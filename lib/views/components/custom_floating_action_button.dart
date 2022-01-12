@@ -61,7 +61,7 @@ class CustomFloatingActionButton extends StatelessWidget {
                         style: const TextStyle(color: Color(0xFF006A4E)),
                       ),
                       Text(
-                        "Total: ৳${cartController.totalPrice}",
+                        "Total: ৳${cartController.totalPrice.toStringAsFixed(2)}",
                         style: const TextStyle(color: Color(0xFF006A4E)),
                       )
                     ],

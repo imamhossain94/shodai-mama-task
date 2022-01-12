@@ -19,6 +19,7 @@ dependencies:
   badges: ^2.0.2
   flutter_carousel_slider: ^1.0.8
   cart_stepper: ^2.0.2
+  path_provider: ^2.0.8
   hive: ^2.0.5
   hive_flutter: ^1.1.0
 

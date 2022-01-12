@@ -63,7 +63,7 @@ class MainPage extends StatelessWidget {
 
 
   Widget shoppingCartBadge() {
-    return Badge(
+    return Obx(()=> cartController.count > 0?Badge(
       position: BadgePosition.topEnd(top: 5, end: 3),
       animationDuration: const Duration(milliseconds: 100),
       animationType: BadgeAnimationType.scale,
@@ -76,7 +76,7 @@ class MainPage extends StatelessWidget {
         ),
       ),
       child: IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}),
-    );
+    ):IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}));
   }
 
 
