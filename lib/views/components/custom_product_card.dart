@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shodai_mama_task/controllers/home_tab_controller.dart';
 import 'package:sizer/sizer.dart';
+import 'package:cart_stepper/cart_stepper.dart';
 
 class CustomProductCard extends StatefulWidget {
   
@@ -15,8 +16,10 @@ class CustomProductCard extends StatefulWidget {
 }
 
 class _CustomProductCardState extends State<CustomProductCard> {
-  
-  
+
+  int _counter = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -120,31 +123,6 @@ class _CustomProductCardState extends State<CustomProductCard> {
                           ],
                         ),
 
-                        // CartStepperInt(
-                        //   count: null,
-                        //   size: 30,
-                        //   activeForegroundColor: Colors.purple,
-                        //   didChangeCount: (count) {
-                        //     // setState(() {
-                        //     //   _counter = count;
-                        //     // });
-                        //   },
-                        // )
-
-                        const Spacer(),
-
-                        Container(
-                          height: 40,
-                          color: const Color(0xFF006A4E),
-                          alignment: Alignment.center,
-                          child: const Text(
-                            "Add To Card",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )
                       ],
                     )),
               ],
@@ -161,7 +139,43 @@ class _CustomProductCardState extends State<CustomProductCard> {
                 child: Text(widget.controller.productLists.value[widget.index].rating!.rate.toString(), style: TextStyle(color: Colors.white),),
               ),
             ),
-
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: _counter > 0? CartStepperInt(
+                count: _counter,
+                radius: Radius.zero,
+                size: 40,
+                elevation: 0,
+                deActiveForegroundColor: Colors.black,
+                activeForegroundColor: Colors.white,
+                activeBackgroundColor: Colors.deepOrangeAccent,
+                didChangeCount: (count) {
+                  setState(() {
+                    _counter = count;
+                  });
+                },
+              ): GestureDetector(
+                onTap: (){
+                  setState(() {
+                    _counter++;
+                  });
+                },
+                child: Container(
+                  height: 40,
+                  color: const Color(0xFF006A4E),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Add To Card",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
