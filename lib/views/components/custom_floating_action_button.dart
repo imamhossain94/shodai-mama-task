@@ -54,6 +54,7 @@ class CustomFloatingActionButton extends StatelessWidget {
                 children: [
                   Expanded(
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "Items: ${cartController.count}",

@@ -81,7 +81,7 @@ class _CustomProductCardState extends State<CustomProductCard> {
                           ),
                         ),
                         SizedBox(
-                          height: 2.h,
+                          height: 1.h,
                         ),
                         Center(
                           child: Text(
@@ -96,7 +96,7 @@ class _CustomProductCardState extends State<CustomProductCard> {
                           ),
                         ),
                         SizedBox(
-                          height: 2.h,
+                          height: 1.h,
                         ),
                         Center(
                           child: Text(
@@ -107,30 +107,30 @@ class _CustomProductCardState extends State<CustomProductCard> {
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 11.sp,
+                                fontSize: 10.sp,
                                 fontFamily: "Roboto",
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
                         SizedBox(
-                          height: 2.h,
+                          height: 1.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Icon(
                               FontAwesomeIcons.motorcycle,
                               color: Colors.redAccent,
-                              size: 14,
+                              size: 12.sp,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Text(
                               "Next Morning",
                               style: TextStyle(
-                                  fontSize: 12, color: Color(0xFF9C9C9C)),
+                                  fontSize: 10.sp, color: const Color(0xFF9C9C9C)),
                             ),
                           ],
                         ),
@@ -148,7 +148,7 @@ class _CustomProductCardState extends State<CustomProductCard> {
                     borderRadius: BorderRadius.circular(3)),
                 child: Row(
                   children: [
-                    const Icon(FontAwesomeIcons.solidStar, size: 10, color: Colors.yellow,),
+                    Icon(FontAwesomeIcons.solidStar, size: 10.sp, color: Colors.yellow,),
                     const SizedBox(width: 5,),
                     Padding(
                       padding: const EdgeInsets.only(top: 2),
@@ -156,7 +156,7 @@ class _CustomProductCardState extends State<CustomProductCard> {
                         widget
                             .controller.productLists.value[widget.index].rating!.rate
                             .toString(),
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.white, fontSize: 10.sp),
                       ),
                     )
                   ],
@@ -171,7 +171,7 @@ class _CustomProductCardState extends State<CustomProductCard> {
                   ? CartStepperInt(
                 count: _counter,
                 radius: Radius.zero,
-                size: 40,
+                size: 5.5.h,
                 elevation: 0,
                 deActiveForegroundColor: Colors.black,
                 activeForegroundColor: Colors.white,
@@ -199,14 +199,15 @@ class _CustomProductCardState extends State<CustomProductCard> {
                       .value[widget.index]);
                 },
                 child: Container(
-                  height: 40,
+                  height: 5.5.h,
                   color: const Color(0xFF006A4E),
                   alignment: Alignment.center,
-                  child: const Text(
+                  child: Text(
                     "Add To Card",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
+                      fontSize: 12.sp
                     ),
                   ),
                 ),
