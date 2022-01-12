@@ -34,7 +34,12 @@ Make a cart using local storage. Make the Add To Cart Button interactive. Save t
 
 
 ## Screenshots
+<p align="center">
 
+  <img alt="image" src="https://github.com/imamhossain94/shodai-mama-task/blob/main/screenshots/image1.jpg" width="40%"> &nbsp;&nbsp;
+  <img alt="image" src="https://github.com/imamhossain94/shodai-mama-task/blob/main/screenshots/image2.jpg" width="40%">
+
+</p>
 
 
 
